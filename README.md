@@ -8,7 +8,13 @@
 
 ## UI界面
 
-![Demo Image](demo/1.png)
+![Demo Image](demos/1.png)
+![Demo Image](demos/2.png)
+![Demo Image](demos/3.png)
+![Demo Image](demos/4.png)
+![Demo Image](demos/5.png)
+![Demo Image](demos/6.png)
+![Demo Image](demos/7.png)
 
 
 
