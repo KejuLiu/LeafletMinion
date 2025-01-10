@@ -1,0 +1,251 @@
+/* 地图容器样式 */
+#map {
+    width: 100%;
+    height: 760px;
+}
+
+/* 右侧工具栏 */
+#sidebar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e8f8f5; /* 浅绿色背景 */
+    padding: 10px;
+    z-index: 1000;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    color: #0b5345; /* 深绿色文字 */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* 按钮样式 */
+#sidebar button,
+#siderbar2 button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px 10px;
+    background: #1abc9c; /* 浅绿色 */
+    color: #fff; /* 白色文字 */
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 按钮悬停效果 */
+#sidebar button:hover,
+#siderbar2 button:hover {
+    background: #16a085; /* 加深绿色 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 加深阴影 */
+    transform: scale(1.05); /* 放大按钮 */
+}
+
+/* 按钮按下效果 */
+#sidebar button:active,
+#siderbar2 button:active {
+    background: #0e6655; /* 更深绿色 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transform: scale(0.95); /* 缩小按钮 */
+}
+
+/* 下拉框样式 */
+#sidebar select {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #1abc9c;
+    background: #ecf0f1; /* 浅灰背景 */
+    color: #2c3e50; /* 深蓝文字 */
+    font-size: 14px;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* 下拉框悬停效果 */
+#sidebar select:hover {
+    border-color: #16a085; /* 鼠标悬浮时边框变深绿色 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 输入框样式 */
+#sidebar input[type="number"] {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #1abc9c;
+    background: #ecf0f1; /* 浅灰背景 */
+    color: #2c3e50; /* 深蓝文字 */
+    font-size: 14px;
+    margin-top: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* 输入框悬停效果 */
+#sidebar input[type="number"]:hover {
+    border-color: #16a085; /* 鼠标悬浮时边框变深绿色 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/* 小地图容器 */
+#miniMapContainer {
+    position: absolute;
+    top: 10px;
+    right: 230px;
+    background: #d1f2eb; /* 浅绿色背景 */
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* 小地图样式 */
+#miniMap {
+    width: 200px;
+    height: 150px;
+    border: 2px solid #1abc9c; /* 浅绿色边框 */
+    border-radius: 3px;
+}
+/* 工具提示 */
+.tooltip {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.9); /* 黑色半透明背景 */
+    color: #ecf0f1; /* 浅灰文字 */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    display: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+/* GitHub按钮容器样式 */
+#githubButton {
+    position: fixed;
+    top: 10px;
+    right: 450px;
+    z-index: 1000;
+}
+
+/* GitHub按钮样式 */
+#githubButton a {
+    display: inline-block;
+    text-decoration: none;
+    background: linear-gradient(45deg, #333, #555); /* 渐变背景 */
+    color: #fff; /* 白色文字 */
+    padding: 10px 20px;
+    border-radius: 8px; /* 更圆角 */
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.2) inset;
+    transition: all 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 悬停效果 */
+#githubButton a:hover {
+    background: linear-gradient(45deg, #555, #777); /* 改变背景色 */
+    transform: scale(1.1); /* 放大 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6), 0 0 15px rgba(255, 255, 255, 0.4) inset; /* 添加发光效果 */
+}
+
+/* 点击效果 */
+#githubButton a:active {
+    transform: scale(0.95); /* 点击时缩小 */
+    background: linear-gradient(45deg, #222, #444); /* 暗化背景 */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 8px rgba(255, 255, 255, 0.2) inset; /* 调整阴影 */
+}
+
+/* 添加鼠标聚焦效果 */
+#githubButton a:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); /* 聚焦光晕 */
+}
+
+
+
+
+/* 左侧工具栏 */
+#siderbar2 {
+    position: absolute;
+    bottom: 120px;
+    left: 60px;
+    background: #f6f6f6; /* 浅灰色背景 */
+    padding: 10px;
+    z-index: 1000;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    color: #2c3e50; /* 深蓝文字 */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* 侧边栏样式 */
+#siderbar2 {
+    position: absolute;
+    bottom: 120px;
+    left: 60px;
+    background: #f6f6f6;
+    padding: 10px;
+    z-index: 1000;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    color: #2c3e50;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    width: 300px; /* 初始宽度 */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 折叠后的状态 */
+#siderbar2.collapsed {
+    transform: translateX(-100%); /* 将侧边栏移出视口 */
+}
+
+/* 折叠按钮样式 */
+#toggleSidebar {
+    width: 100%;
+    padding: 10px;
+    background: #16a085;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* 按钮悬停效果 */
+#toggleSidebar:hover {
+    background: #1abc9c;
+}
+
+/* 侧边栏内容部分 */
+.sidebar-content {
+    padding-top: 10px;
+}
+
+/* 输入框与按钮的样式与之前保持一致 */
+#searchValue, #searchBy, #queryVectorByIdOrName {
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #1abc9c;
+    background: #ecf0f1;
+    font-size: 14px;
+}
+
+
+
+
+  

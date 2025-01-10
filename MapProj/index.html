@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet大作业</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css" />
+
+
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <!-- Sidebar: 地图工具部分 -->
+    <div id="sidebar">
+        <h3>地图工具</h3>
+        <button id="clear">Leaflet绘制工具清空绘制</button>
+        <button id="fullscreen">全屏模式</button>
+
+        <h4>选择图层:</h4>
+        <select id="tileLayerSelect">
+            <option value="amap">高德地图</option>
+            <option value="arcgis">ESRI卫星影像</option>
+            <option value="tdt_vec">天地图矢量地图</option>
+            <option value="tdt_img">天地图卫星影像</option>
+            <option value="tdt_ter">天地图地形图</option>
+        </select>
+
+        <h4>地图中心:</h4>
+        <p id="mapCenter">经度: 116.4074, 纬度: 39.9042</p>
+
+        <h4>鼠标经纬度:</h4>
+        <p id="cursorPosition">经度: -, 纬度: -</p>
+
+        <h4>视图与缩放:</h4>
+        <label for="zoomLevel">缩放级别:</label>
+        <input type="number" id="zoomLevel" min="1" max="20" value="13" />
+        <button id="setView">设置视图</button>
+        <h4>POI操作</h4>
+        <button id="loadPOIButton">添加POI</button>
+        <button id="clearPOIButton">删除POI</button>
+    </div>
+   
+    <!-- 用于显示操作结果的区域 -->
+    <div id="output-area"></div>
+   
+    <!-- Sidebar 2: GeoJSON操作部分 -->
+    <div id="siderbar2">
+        <button id="toggleSidebar" class="toggle-btn">展开/收起操作面板</button>
+            <div id="sidebarContent" class="sidebar-content">
+                <h4>GeoJSON图层交互</h4>
+                    <button id="loadGeoJson">加载GeoJSON几何图层</button>
+                    <button id="unloadGeoJson">加载GeoJSON属性图层</button>
+                <h4>图层折线测距</h4>
+                    <button id="measureDistanceButton">折线距离测量</button>
+                    <button id="exportDistanceButton">导出测距结果</button>
+                    <button id="clearDistanceButton">清空测距绘制</button>
+                <h4>矢量地块操作</h4>
+                    <button id="queryVectorLayer">添加矢量地块</button>
+                    <input type="text" id="searchValue" placeholder="请输入ID或名称进行查询">
+                        <select id="searchBy">
+                            <option value="id">按ID查询</option>
+                            <option value="name">按名称查询</option>
+                        </select>
+                    <button id="queryVectorByIdOrName">查询地块</button>
+            </div>
+    </div>
+    <!-- GitHub 链接 -->
+    <div id="githubButton">
+        <a href="https://github.com/KejuLiu" target="_blank">我的GitHub</a>
+    </div>
+
+    <!-- 小地图容器 -->
+    <div id="miniMapContainer">
+        <div id="miniMap"></div>
+    </div>
+
+    <!-- 主地图容器 -->
+    <div id="map"></div>
+
+    <!-- 工具提示容器 -->
+    <div class="tooltip" id="tooltip"></div>
+    <script src="./js/mapConfig.js"></script>
+    <script src="./js/mapEvents.js"></script> 
+    <script src="./js/vectorQuery.js" defer></script>
+    <script src="./js/vectorQueryByIdOrName.js" defer></script>
+    <script src="./js/jsonCheck.js" defer></script>
+    <script src="./js/jsonControl.js" defer></script> 
+    <script src="./js/addPOI.js"></script>
+    <script src="./js/measureDistance.js"></script>
+    <script>
+        var loadButton = document.getElementById('loadGeoJson');
+        var unloadButton = document.getElementById('unloadGeoJson');
+        // 点击按钮加载GeoJSON
+        loadButton.onclick = function() {
+            loadGeoJSON(map);  
+        };
+        // 点击按钮卸载GeoJSON
+        unloadButton.onclick = function() {
+            unloadGeoJSON(map); 
+        };
+
+        document.getElementById("measureDistanceButton").onclick = function () {
+        enableDistanceMeasure(map);
+        };
+
+        document.getElementById("clearDistanceButton").onclick = function () {
+        clearDistanceLayer();
+        };
+
+        document.getElementById("exportDistanceButton").onclick = function () {
+        exportDistanceResult();
+        };
+
+        document.getElementById("loadPOIButton").onclick = function () {
+            loadPOI();
+        };
+
+        document.getElementById("clearPOIButton").onclick = function () {
+            clearPOI();
+        };
+    </script>
+
+
+    <script>
+        // 按钮事件绑定
+        document.getElementById("queryVectorLayer").onclick = function () {
+            queryVectorLayer(map);
+        };
+
+        document.getElementById("queryVectorByIdOrName").onclick = function () {
+            var queryValue = document.getElementById("searchValue").value;
+            var searchBy = document.getElementById("searchBy").value;
+            queryVectorByIdOrName(map, queryValue, searchBy);
+        };
+    </script>
+
+    <script>
+        // 控制侧边栏折叠和展开
+        document.getElementById("toggleSidebar").onclick = function() {
+            var sidebar = document.getElementById("siderbar2");
+            sidebar.classList.toggle("collapsed");
+        };
+    </script>
+
+
+
+    
+</body>
+</html>
